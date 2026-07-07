@@ -1,0 +1,16 @@
+# /etc/systemd/system/pulse-webhook.service
+[Unit]
+Description=Pulse GitHub webhook auto-deploy listener
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=ubuntu
+Environment=WEBHOOK_SECRET=CHANGE_ME_TO_A_LONG_RANDOM_STRING
+Environment=NEXT_PUBLIC_API_URL=http://YOUR_ELASTIC_IP/api
+ExecStart=/usr/bin/node /home/ubuntu/apps/infrastructure/webhook/webhook-server.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
