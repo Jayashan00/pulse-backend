@@ -10,6 +10,7 @@ import { PostsModule } from './posts/posts.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { MessagesModule } from './messages/messages.module';
 import { UploadModule } from './upload/upload.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { UploadModule } from './upload/upload.module';
     NotificationsModule,
     MessagesModule,
     UploadModule,
+    controllers: [AppController],
   ],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
