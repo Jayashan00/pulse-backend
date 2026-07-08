@@ -4,3 +4,9 @@ uploads/
 .env
 *.log
 serviceAccountKey.json
+
+# Terraform working files
+infrastructure/terraform/.terraform/
+infrastructure/terraform/*.tfstate
+infrastructure/terraform/*.tfstate.backup
+infrastructure/terraform/terraform.tfvars
