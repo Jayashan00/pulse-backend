@@ -1,5 +1,7 @@
 # Pulse API — NestJS Backend
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Jayashan00_pulse-backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Jayashan00_pulse-backend)
+
 The REST API layer of **Pulse**, a TikTok-style social platform. NestJS is the only layer that talks to PostgreSQL (via Prisma) and Firebase (Authentication + Storage via the Admin SDK). The Next.js frontend consumes this API over HTTP.
 
 **Live API:** `http://13.235.153.158/api`  
@@ -115,3 +117,8 @@ Or run the whole stack in Docker: `docker compose up --build`
 
 ## Future Improvements
 WebSocket gateway for real-time DMs/notifications · follow system + personalized feed ranking · refresh-token rotation endpoint · S3/CloudFront media CDN · Redis cache for feed & unread counts · e2e tests with Testcontainers
+
+## Code Quality
+Static analysis runs on every push via SonarCloud + GitHub Actions. Quality gate: passing (0 open vulnerabilities in application code, A maintainability).
+
+![SonarCloud Analysis](screenshots/sonarcloud-backend.png)
