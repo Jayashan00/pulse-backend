@@ -23,6 +23,8 @@ services:
       DATABASE_URL: postgresql://${POSTGRES_USER:-pulse}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-pulse_db}?schema=public
     ports:
       - "127.0.0.1:4000:4000"
+    volumes:
+      - pulse_uploads:/app/uploads
     depends_on:
       postgres:
         condition: service_healthy
