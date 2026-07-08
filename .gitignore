@@ -1,7 +1,6 @@
 node_modules/
 dist/
 uploads/
-.env
 *.log
 serviceAccountKey.json
 
@@ -10,3 +9,4 @@ infrastructure/terraform/.terraform/
 infrastructure/terraform/*.tfstate
 infrastructure/terraform/*.tfstate.backup
 infrastructure/terraform/terraform.tfvars
+config.bat
