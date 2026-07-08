@@ -1,11 +1,12 @@
-import { IsIn, IsNotEmpty, IsOptional, IsString, IsUrl, MaxLength } from 'class-validator';
+import { IsIn, IsNotEmpty, IsOptional, IsString, Matches, MaxLength } from 'class-validator';
 
 export class CreatePostDto {
   @IsString() @IsNotEmpty({ message: 'Caption is required' }) @MaxLength(500)
   caption: string;
 
-    @IsOptional() @IsUrl({ require_tld: false, allow_ip_domain: true }, { message: 'Media must be a valid URL' })
-    mediaUrl?: string;
+  @IsOptional()
+  @Matches(/^https?:\/\/\S+$/, { message: 'Media must be a valid URL' })
+  mediaUrl?: string;
 
   @IsOptional() @IsIn(['image', 'video', 'gif'])
   mediaType?: string;
