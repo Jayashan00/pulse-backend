@@ -2,7 +2,7 @@
 
 The REST API layer of **Pulse**, a TikTok-style social platform. NestJS is the only layer that talks to PostgreSQL (via Prisma) and Firebase (Authentication + Storage via the Admin SDK). The Next.js frontend consumes this API over HTTP.
 
-**Live API:** `http://<YOUR_ELASTIC_IP>/api` ← update after deployment
+**Live API:** `http://13.235.153.158/api`  
 
 ---
 
