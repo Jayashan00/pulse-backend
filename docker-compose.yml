@@ -6,9 +6,9 @@ services:
     container_name: pulse-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: pulse
-      POSTGRES_PASSWORD: pulse_password
-      POSTGRES_DB: pulse_db
+      POSTGRES_USER: ${POSTGRES_USER:-pulse}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pulse_password}
+      POSTGRES_DB: ${POSTGRES_DB:-pulse_db}
     ports:
       - "5432:5432"
     volumes:
