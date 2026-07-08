@@ -2,7 +2,7 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Jayashan00_pulse-backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Jayashan00_pulse-backend)
 
-The REST API layer of **Pulse**, a TikTok-style social platform. NestJS is the only layer that talks to PostgreSQL (via Prisma) and Firebase (Authentication + Storage via the Admin SDK). The Next.js frontend consumes this API over HTTP.
+The REST API layer of **Pulse**, a TikTok-style social platform. NestJS is the only layer that talks to PostgreSQL (via Prisma) and Firebase (Authentication via the Admin SDK). The Next.js frontend consumes this API over HTTP.
 
 **Live API:** `http://13.235.153.158/api`  
 
@@ -15,7 +15,7 @@ Pulse API provides authentication, posts (with likes/saves/shares/comments), use
 - **Auth API** — sign-up, login, logout backed by **Firebase Authentication** (Admin SDK + Identity Toolkit); returns an ID token consumed by the frontend
 - **Posts API** — full CRUD, cursor-paginated feed, like/save toggles, share counter, comments (create/list/delete), automatic like/comment **notifications**
 - **Users API** — profile fetch/update, user search, per-user posts, saved posts
-- **Upload API** — multipart upload to **Firebase Storage** (images/GIFs/short clips ≤ 25 MB), returns a public download URL
+- **Upload API** — multipart upload stored on a persistent Docker volume (images/GIFs/short clips ≤ 25 MB), served at /api/uploads with a public URL returned
 - **Notifications API** — list, unread count, mark-as-read (single + all)
 - **Messages API** — conversations list with unread counts, thread fetch (auto-marks read), send (auto-creates conversation)
 - **Hardening** — global ValidationPipe (whitelist + forbid unknown), `@nestjs/throttler` rate limiting (120 req/min), centralized exception filter, DB-level constraints (unique indexes, FKs with cascade, length limits)
@@ -45,7 +45,7 @@ src/
 ├── posts/           PostsModule — CRUD, feed, likes, saves, shares, comments
 ├── notifications/   NotificationsModule — list / unread / mark-read
 ├── messages/        MessagesModule — conversations & messages
-├── upload/          UploadModule — media → Firebase Storage
+├── upload/          UploadModule — media → disk volume Storage
 ├── firebase/        Firebase Admin SDK provider (global)
 ├── prisma/          PrismaService (global)
 └── common/          FirebaseAuthGuard, @CurrentUser, AllExceptionsFilter
@@ -78,7 +78,7 @@ src/
 ```bash
 git clone <this-repo> && cd pulse-backend
 npm install
-cp .env .env        # fill in every value (see below)
+cp .env.example .env
 ```
 
 ### Environment Variables (never commit `.env`)
