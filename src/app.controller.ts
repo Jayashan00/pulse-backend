@@ -5,7 +5,7 @@ export class AppController {
   @Get()
   root() {
     return {
-      name: 'Pulse API',
+      name: 'Nexora API',
       status: 'online',
       version: '1.0.0',
       documentation: 'https://github.com/Jayashan00/pulse-backend#api-endpoints-prefix-api',

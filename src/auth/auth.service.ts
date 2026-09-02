@@ -47,7 +47,7 @@ export class AuthService {
     });
 
     await this.prisma.notification.create({
-      data: { userId: user.id, type: 'system', message: 'Welcome to Pulse! Create your first post to get started. 🎉' },
+      data: { userId: user.id, type: 'system', message: 'Welcome to Nexora! Create your first post to get started. 🎉' },
     });
 
     const session = await this.passwordSignIn(dto.email, dto.password);

@@ -1,7 +1,7 @@
 {
-  "name": "pulse-backend",
+  "name": "nexora-backend",
   "version": "1.0.0",
-  "description": "Pulse - TikTok-style social platform API (NestJS + PostgreSQL + Firebase)",
+  "description": "Nexora - TikTok-style social platform API (NestJS + PostgreSQL + Firebase)",
   "scripts": {
     "build": "nest build",
     "start": "nest start",

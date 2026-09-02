@@ -2,7 +2,7 @@
 module.exports = {
   apps: [
     {
-      name: 'pulse-api',
+      name: 'nexora-api',
       script: 'dist/main.js',
       instances: 1,
       autorestart: true,
